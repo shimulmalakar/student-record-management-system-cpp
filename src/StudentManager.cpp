@@ -1,11 +1,13 @@
 #include "../include/StudentManager.h"
 #include <bits/stdc++.h>
+#include <fstream>
 
 using namespace std;
 
 void StudentManager::addStudent(const Student& newStudent)
 {
     studentList.push_back(newStudent);
+    saveToFile();
 }
 
 void StudentManager::displayStudents() const
@@ -81,4 +83,18 @@ bool StudentManager::deleteStudent(int id)
     }
 
     return false;
+}
+void StudentManager::saveToFile()
+{
+    ofstream outFile("data/students.txt");
+
+    for (const Student& student : studentList)
+    {
+        outFile << student.getId() << ","
+                << student.getName() << ","
+                << student.getAge() << ","
+                << student.getDepartment() << "\n";
+    }
+
+    outFile.close();
 }

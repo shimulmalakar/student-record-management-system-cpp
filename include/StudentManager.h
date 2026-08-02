@@ -9,11 +9,13 @@ private:
     vector<Student> studentList;
 
 public:
-    void addStudent(const Student& newStudent);
+    void addStudent(const Student &newStudent);
     void displayStudents() const;
-    Student* searchStudentById(int id);
-    Student* searchStudentByName(const string& name);
-    bool updateStudent(int id, const string& newName, int newAge, const string& newDepartment);
+    Student *searchStudentById(int id);
+    Student *searchStudentByName(const string &name);
+    bool updateStudent(int id, const string &newName, int newAge, const string &newDepartment);
     bool deleteStudent(int id);
+    void saveToFile();
+    void loadFromFile();
 };
-#endif 
+#endif
