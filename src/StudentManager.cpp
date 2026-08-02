@@ -68,3 +68,17 @@ bool StudentManager::updateStudent(int id, const string& newName, int newAge, co
 
     return false;
 }
+
+bool StudentManager::deleteStudent(int id)
+{
+    for (int i = 0; i < studentList.size(); i++)
+    {
+        if (studentList[i].getId() == id)
+        {
+            studentList.erase(studentList.begin() + i);
+            return true;
+        }
+    }
+
+    return false;
+}

@@ -4,7 +4,7 @@
 
 using namespace std;
 
-void displayStudent(const Student& student)
+void displayStudent(const Student &student)
 {
     cout << "\nStudent Found!\n";
     cout << "Name: " << student.getName() << endl;
@@ -26,7 +26,9 @@ int main()
         cout << "3. Search Student by ID\n";
         cout << "4. Search Student by Name\n";
         cout << "5. Update Student\n";
-        cout << "6. Exit\n";
+        cout << "6. Delete Student\n";
+        cout << "6. Delete Student\n";
+        cout << "7. Exit\n";
 
         cout << "\nEnter your choice: ";
         cin >> choice;
@@ -58,31 +60,14 @@ int main()
         {
             manager.displayStudents();
         }
-       else if (choice == 3)
-{
-    int id;
-
-    cout << "Enter Student ID: ";
-    cin >> id;
-
-    Student* foundStudentPtr = manager.searchStudentById(id);
-
-    if (foundStudentPtr != nullptr)
-    {  displayStudent(*foundStudentPtr);
-    }
-    else
-    {
-        cout << "\nStudent not found.\n";
-    }
-}
-        else if (choice == 4)
+        else if (choice == 3)
         {
-            string name;
+            int id;
 
-            cout << "Enter Student Name: ";
-            cin >> name;
+            cout << "Enter Student ID: ";
+            cin >> id;
 
-            Student* foundStudentPtr = manager.searchStudentByName(name);
+            Student *foundStudentPtr = manager.searchStudentById(id);
 
             if (foundStudentPtr != nullptr)
             {
@@ -93,36 +78,72 @@ int main()
                 cout << "\nStudent not found.\n";
             }
         }
-          else if (choice == 5)
-{
-    int id, age;
-    string name, department;
+        else if (choice == 4)
+        {
+            string name;
 
-    cout << "\nEnter Student ID: ";
-    cin >> id;
+            cout << "Enter Student Name: ";
+            cin >> name;
 
-    cout << "Enter New Name: ";
-    cin >> name;
+            Student *foundStudentPtr = manager.searchStudentByName(name);
 
-    cout << "Enter New Age: ";
-    cin >> age;
+            if (foundStudentPtr != nullptr)
+            {
+                displayStudent(*foundStudentPtr);
+            }
+            else
+            {
+                cout << "\nStudent not found.\n";
+            }
+        }
+        else if (choice == 5)
+        {
+            int id, age;
+            string name, department;
 
-    cout << "Enter New Department: ";
-    cin >> department;
+            cout << "\nEnter Student ID: ";
+            cin >> id;
 
-    bool isUpdated = manager.updateStudent(id, name, age, department);
+            cout << "Enter New Name: ";
+            cin >> name;
 
-    if (isUpdated)
-    {
-        cout << "\nStudent Updated Successfully!\n";
-    }
-    else
-    {
-        cout << "\nStudent Not Found!\n";
-    }
-}
+            cout << "Enter New Age: ";
+            cin >> age;
 
+            cout << "Enter New Department: ";
+            cin >> department;
+
+            bool isUpdated = manager.updateStudent(id, name, age, department);
+
+            if (isUpdated)
+            {
+                cout << "\nStudent Updated Successfully!\n";
+            }
+            else
+            {
+                cout << "\nStudent Not Found!\n";
+            }
+        }
         else if (choice == 6)
+        {
+            int id;
+
+            cout << "\nEnter Student ID: ";
+            cin >> id;
+
+            bool isDeleted = manager.deleteStudent(id);
+
+            if (isDeleted)
+            {
+                cout << "\nStudent Deleted Successfully!\n";
+            }
+            else
+            {
+                cout << "\nStudent Not Found!\n";
+            }
+        }
+
+        else if (choice == 7)
         {
             cout << "\nThank you for using the Student Management System!\n";
             break;
