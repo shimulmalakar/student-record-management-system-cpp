@@ -44,6 +44,11 @@ int main()
 
             cout << "Enter Age: ";
             cin >> age;
+            if (age <= 0)
+            {
+                cout << "\nInvalid age!\n";
+                continue;
+            }
 
             cout << "Enter ID: ";
             cin >> id;
@@ -117,6 +122,11 @@ int main()
 
             cout << "Enter New Age: ";
             cin >> age;
+            if (age <= 0)
+            {
+                cout << "\nInvalid age!\n";
+                continue;
+            }
 
             cout << "Enter New Department: ";
             cin.ignore();
