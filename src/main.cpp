@@ -16,6 +16,7 @@ void displayStudent(const Student &student)
 int main()
 {
     StudentManager manager;
+    manager.loadFromFile();
     int choice;
 
     while (true)

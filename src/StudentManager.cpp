@@ -1,10 +1,11 @@
 #include "../include/StudentManager.h"
 #include <bits/stdc++.h>
 #include <fstream>
+#include <sstream>
 
 using namespace std;
 
-void StudentManager::addStudent(const Student& newStudent)
+void StudentManager::addStudent(const Student &newStudent)
 {
     studentList.push_back(newStudent);
     saveToFile();
@@ -18,7 +19,7 @@ void StudentManager::displayStudents() const
         return;
     }
 
-    for (const Student& currentStudent : studentList)
+    for (const Student &currentStudent : studentList)
     {
         cout << "------------------------" << endl;
         cout << "ID         : " << currentStudent.getId() << endl;
@@ -28,9 +29,9 @@ void StudentManager::displayStudents() const
     }
 }
 
-Student* StudentManager::searchStudentById(int id)
+Student *StudentManager::searchStudentById(int id)
 {
-    for (Student& currentStudent : studentList)
+    for (Student &currentStudent : studentList)
     {
         if (currentStudent.getId() == id)
         {
@@ -41,9 +42,9 @@ Student* StudentManager::searchStudentById(int id)
     return nullptr;
 }
 
-Student* StudentManager::searchStudentByName(const string& name)
+Student *StudentManager::searchStudentByName(const string &name)
 {
-    for (Student& student : studentList)
+    for (Student &student : studentList)
     {
         if (student.getName() == name)
         {
@@ -54,16 +55,16 @@ Student* StudentManager::searchStudentByName(const string& name)
     return nullptr;
 }
 
-bool StudentManager::updateStudent(int id, const string& newName, int newAge, const string& newDepartment)
+bool StudentManager::updateStudent(int id, const string &newName, int newAge, const string &newDepartment)
 {
-    for (Student& student : studentList)
+    for (Student &student : studentList)
     {
         if (student.getId() == id)
         {
             student.setName(newName);
             student.setAge(newAge);
             student.setDepartment(newDepartment);
-
+            saveToFile();
             return true;
         }
     }
@@ -78,6 +79,7 @@ bool StudentManager::deleteStudent(int id)
         if (studentList[i].getId() == id)
         {
             studentList.erase(studentList.begin() + i);
+            saveToFile();
             return true;
         }
     }
@@ -88,7 +90,7 @@ void StudentManager::saveToFile()
 {
     ofstream outFile("data/students.txt");
 
-    for (const Student& student : studentList)
+    for (const Student &student : studentList)
     {
         outFile << student.getId() << ","
                 << student.getName() << ","
@@ -97,4 +99,30 @@ void StudentManager::saveToFile()
     }
 
     outFile.close();
+}
+
+void StudentManager::loadFromFile()
+{
+    ifstream inFile("data/students.txt");
+
+    string line;
+
+    while (getline(inFile, line))
+    {
+        stringstream ss(line);
+
+        string name, department;
+        string idStr, ageStr;
+
+        getline(ss, idStr, ',');
+        getline(ss, name, ',');
+        getline(ss, ageStr, ',');
+        getline(ss, department);
+        int id = stoi(idStr);
+        int age = stoi(ageStr);
+        Student newStudent(name, age, id, department);
+
+        studentList.push_back(newStudent);
+    }
+    inFile.close();
 }
