@@ -1,3 +1,3 @@
-178,Shimul,23,CSE
-178,Shimul,23,cse
-177,Sam,22,cse
+2412178,Shimul Malakar,23,Computer Science and Engineering
+2412179,Rahim Ahmed,22,Electrical Engineering
+2412180,Karim Hasan,21,Mechanical Engineering
