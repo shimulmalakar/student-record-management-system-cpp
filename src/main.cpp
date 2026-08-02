@@ -1,4 +1,5 @@
 #include <iostream>
+#include <limits>
 #include "../include/Student.h"
 #include "../include/StudentManager.h"
 
@@ -7,17 +8,36 @@ using namespace std;
 void displayStudent(const Student &student)
 {
     cout << "\nStudent Found!\n";
-    cout << "Name: " << student.getName() << endl;
-    cout << "Age: " << student.getAge() << endl;
-    cout << "ID: " << student.getId() << endl;
-    cout << "Department: " << student.getDepartment() << endl;
+    cout << "Name       : " << student.getName() << endl;
+    cout << "Age        : " << student.getAge() << endl;
+    cout << "ID         : " << student.getId() << endl;
+    cout << "Department : " << student.getDepartment() << endl;
+}
+
+int getValidInt(const string &message)
+{
+    int value;
+
+    while (true)
+    {
+        cout << message;
+
+        if (cin >> value)
+        {
+            return value;
+        }
+
+        cout << "\nInvalid input! Please enter a number.\n";
+
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    }
 }
 
 int main()
 {
     StudentManager manager;
     manager.loadFromFile();
-    int choice;
 
     while (true)
     {
@@ -30,28 +50,38 @@ int main()
         cout << "6. Delete Student\n";
         cout << "7. Exit\n";
 
-        cout << "\nEnter your choice: ";
-        cin >> choice;
+        int choice = getValidInt("\nEnter your choice: ");
 
         if (choice == 1)
         {
             string name, department;
-            int age, id;
 
             cout << "\nEnter Name: ";
-            cin.ignore();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
             getline(cin, name);
 
-            cout << "Enter Age: ";
-            cin >> age;
-            if (age <= 0)
+            if (name.empty())
             {
-                cout << "\nInvalid age!\n";
+                cout << "\nName cannot be empty!\n";
                 continue;
             }
 
-            cout << "Enter ID: ";
-            cin >> id;
+            int age = getValidInt("Enter Age: ");
+
+            if (age <= 0)
+            {
+                cout << "\nAge must be greater than 0.\n";
+                continue;
+            }
+
+            int id = getValidInt("Enter ID: ");
+
+            if (id <= 0)
+            {
+                cout << "\nID must be greater than 0.\n";
+                continue;
+            }
+
             if (manager.idExists(id))
             {
                 cout << "\nA student with this ID already exists!\n";
@@ -59,11 +89,16 @@ int main()
             }
 
             cout << "Enter Department: ";
-            cin.ignore();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
             getline(cin, department);
 
-            Student newStudent(name, age, id, department);
+            if (department.empty())
+            {
+                cout << "\nDepartment cannot be empty!\n";
+                continue;
+            }
 
+            Student newStudent(name, age, id, department);
             manager.addStudent(newStudent);
 
             cout << "\nStudent Added Successfully!\n";
@@ -74,10 +109,14 @@ int main()
         }
         else if (choice == 3)
         {
-            int id;
+            int id = getValidInt("\nEnter Student ID: ");
 
-            cout << "Enter Student ID: ";
-            cin >> id;
+            if (id <= 0)
+            {
+                cout << "\nID must be greater than 0.\n";
+                continue;
+            }
+
             Student *foundStudentPtr = manager.searchStudentById(id);
 
             if (foundStudentPtr != nullptr)
@@ -94,8 +133,14 @@ int main()
             string name;
 
             cout << "\nEnter Name: ";
-            cin.ignore();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
             getline(cin, name);
+
+            if (name.empty())
+            {
+                cout << "\nName cannot be empty!\n";
+                continue;
+            }
 
             Student *foundStudentPtr = manager.searchStudentByName(name);
 
@@ -110,27 +155,43 @@ int main()
         }
         else if (choice == 5)
         {
-            int id, age;
+            int id = getValidInt("\nEnter Student ID: ");
+
+            if (id <= 0)
+            {
+                cout << "\nID must be greater than 0.\n";
+                continue;
+            }
+
             string name, department;
 
-            cout << "\nEnter Student ID: ";
-            cin >> id;
-
             cout << "Enter New Name: ";
-            cin.ignore();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
             getline(cin, name);
 
-            cout << "Enter New Age: ";
-            cin >> age;
+            if (name.empty())
+            {
+                cout << "\nName cannot be empty!\n";
+                continue;
+            }
+
+            int age = getValidInt("Enter New Age: ");
+
             if (age <= 0)
             {
-                cout << "\nInvalid age!\n";
+                cout << "\nAge must be greater than 0.\n";
                 continue;
             }
 
             cout << "Enter New Department: ";
-            cin.ignore();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
             getline(cin, department);
+
+            if (department.empty())
+            {
+                cout << "\nDepartment cannot be empty!\n";
+                continue;
+            }
 
             bool isUpdated = manager.updateStudent(id, name, age, department);
 
@@ -145,10 +206,13 @@ int main()
         }
         else if (choice == 6)
         {
-            int id;
+            int id = getValidInt("\nEnter Student ID: ");
 
-            cout << "\nEnter Student ID: ";
-            cin >> id;
+            if (id <= 0)
+            {
+                cout << "\nID must be greater than 0.\n";
+                continue;
+            }
 
             bool isDeleted = manager.deleteStudent(id);
 
@@ -161,7 +225,6 @@ int main()
                 cout << "\nStudent Not Found!\n";
             }
         }
-
         else if (choice == 7)
         {
             cout << "\nThank you for using the Student Management System!\n";
@@ -169,7 +232,7 @@ int main()
         }
         else
         {
-            cout << "Invalid Choice!\n";
+            cout << "\nInvalid Choice! Please choose between 1 and 7.\n";
         }
     }
 
