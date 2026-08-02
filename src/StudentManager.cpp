@@ -38,3 +38,16 @@ Student* StudentManager::searchStudentById(int id)
 
     return nullptr;
 }
+
+Student* StudentManager::searchStudentByName(const string& name)
+{
+    for (Student& student : studentList)
+    {
+        if (student.getName() == name)
+        {
+            return &student;
+        }
+    }
+
+    return nullptr;
+}

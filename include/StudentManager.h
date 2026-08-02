@@ -12,5 +12,6 @@ public:
     void addStudent(const Student& newStudent);
     void displayStudents() const;
     Student* searchStudentById(int id);
+    Student* searchStudentByName(const string& name);
 };
 #endif 
