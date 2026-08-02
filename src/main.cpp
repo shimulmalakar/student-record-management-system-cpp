@@ -47,6 +47,11 @@ int main()
 
             cout << "Enter ID: ";
             cin >> id;
+            if (manager.idExists(id))
+            {
+                cout << "\nA student with this ID already exists!\n";
+                continue;
+            }
 
             cout << "Enter Department: ";
             cin.ignore();
@@ -68,7 +73,6 @@ int main()
 
             cout << "Enter Student ID: ";
             cin >> id;
-
             Student *foundStudentPtr = manager.searchStudentById(id);
 
             if (foundStudentPtr != nullptr)

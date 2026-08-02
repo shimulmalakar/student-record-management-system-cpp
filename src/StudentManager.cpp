@@ -126,3 +126,7 @@ void StudentManager::loadFromFile()
     }
     inFile.close();
 }
+bool StudentManager::idExists(int id)
+{
+    return searchStudentById(id) != nullptr;
+}

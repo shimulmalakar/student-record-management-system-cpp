@@ -17,5 +17,6 @@ public:
     bool deleteStudent(int id);
     void saveToFile();
     void loadFromFile();
+    bool idExists(int id);
 };
 #endif
