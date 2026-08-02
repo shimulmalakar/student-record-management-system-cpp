@@ -25,7 +25,8 @@ int main()
         cout << "2. Display Students\n";
         cout << "3. Search Student by ID\n";
         cout << "4. Search Student by Name\n";
-        cout << "5. Exit\n";
+        cout << "5. Update Student\n";
+        cout << "6. Exit\n";
 
         cout << "\nEnter your choice: ";
         cin >> choice;
@@ -92,7 +93,36 @@ int main()
                 cout << "\nStudent not found.\n";
             }
         }
-        else if (choice == 5)
+          else if (choice == 5)
+{
+    int id, age;
+    string name, department;
+
+    cout << "\nEnter Student ID: ";
+    cin >> id;
+
+    cout << "Enter New Name: ";
+    cin >> name;
+
+    cout << "Enter New Age: ";
+    cin >> age;
+
+    cout << "Enter New Department: ";
+    cin >> department;
+
+    bool isUpdated = manager.updateStudent(id, name, age, department);
+
+    if (isUpdated)
+    {
+        cout << "\nStudent Updated Successfully!\n";
+    }
+    else
+    {
+        cout << "\nStudent Not Found!\n";
+    }
+}
+
+        else if (choice == 6)
         {
             cout << "\nThank you for using the Student Management System!\n";
             break;

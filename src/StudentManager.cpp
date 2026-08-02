@@ -51,3 +51,20 @@ Student* StudentManager::searchStudentByName(const string& name)
 
     return nullptr;
 }
+
+bool StudentManager::updateStudent(int id, const string& newName, int newAge, const string& newDepartment)
+{
+    for (Student& student : studentList)
+    {
+        if (student.getId() == id)
+        {
+            student.setName(newName);
+            student.setAge(newAge);
+            student.setDepartment(newDepartment);
+
+            return true;
+        }
+    }
+
+    return false;
+}
