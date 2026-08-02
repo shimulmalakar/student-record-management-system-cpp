@@ -28,7 +28,6 @@ int main()
         cout << "4. Search Student by Name\n";
         cout << "5. Update Student\n";
         cout << "6. Delete Student\n";
-        cout << "6. Delete Student\n";
         cout << "7. Exit\n";
 
         cout << "\nEnter your choice: ";
@@ -40,7 +39,8 @@ int main()
             int age, id;
 
             cout << "\nEnter Name: ";
-            cin >> name;
+            cin.ignore();
+            getline(cin, name);
 
             cout << "Enter Age: ";
             cin >> age;
@@ -49,7 +49,8 @@ int main()
             cin >> id;
 
             cout << "Enter Department: ";
-            cin >> department;
+            cin.ignore();
+            getline(cin, department);
 
             Student newStudent(name, age, id, department);
 
@@ -83,8 +84,9 @@ int main()
         {
             string name;
 
-            cout << "Enter Student Name: ";
-            cin >> name;
+            cout << "\nEnter Name: ";
+            cin.ignore();
+            getline(cin, name);
 
             Student *foundStudentPtr = manager.searchStudentByName(name);
 
@@ -106,13 +108,15 @@ int main()
             cin >> id;
 
             cout << "Enter New Name: ";
-            cin >> name;
+            cin.ignore();
+            getline(cin, name);
 
             cout << "Enter New Age: ";
             cin >> age;
 
             cout << "Enter New Department: ";
-            cin >> department;
+            cin.ignore();
+            getline(cin, department);
 
             bool isUpdated = manager.updateStudent(id, name, age, department);
 
