@@ -1,0 +1,11 @@
+# Compiled executables
+*.exe
+
+# VS Code
+.vscode/
+
+# Object files
+*.o
+
+# Build folders
+build/
