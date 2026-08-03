@@ -1,32 +1,39 @@
 # 🎓 Student Record Management System (C++)
 
-A simple console-based Student Record Management System developed in C++ using Object-Oriented Programming (OOP). The application allows users to manage student records with persistent file storage.
+A console-based **Student Record Management System** developed in **C++** using **Object-Oriented Programming (OOP)** and **file handling**. The application allows users to manage student records with persistent storage.
 
-## ✨ Features
+---
 
-- Add Student
-- Display All Students
-- Search Student by ID
-- Search Student by Name
-- Update Student Information
-- Delete Student
-- Automatic Data Saving
-- Load Data on Startup
-- Multi-word Name & Department Support
-- Duplicate ID Prevention
-- Input Validation
+## 🚀 Features
 
-## 🛠 Technologies Used
+- ➕ Add Student
+- 📋 Display All Students
+- 🔍 Search Student by ID
+- 🔎 Search Student by Name
+- ✏️ Update Student Information
+- ❌ Delete Student
+- 💾 Automatic File Saving
+- 📂 Persistent Data Storage
+- 📝 Multi-word Input Support
+- 🆔 Duplicate Student ID Prevention
+- ✅ Input Validation
+
+---
+
+## 🛠️ Technologies Used
 
 - C++
 - Object-Oriented Programming (OOP)
-- STL Vector
+- Standard Template Library (STL)
 - File Handling
-- Git & GitHub
+- Git
+- GitHub
 
-## 📂 Project Structure
+---
 
-```
+## 📁 Project Structure
+
+```text
 StudentRecordManagementSystem/
 │
 ├── data/
@@ -41,63 +48,123 @@ StudentRecordManagementSystem/
 │   ├── Student.cpp
 │   └── StudentManager.cpp
 │
+├── images/
+│   ├── home.png
+│   ├── add-student.png
+│   ├── display.png
+│   ├── search-id.png
+│   ├── search-name.png
+│   ├── update.png
+│   └── delete.png
+│
+├── .gitignore
 ├── LICENSE
 └── README.md
 ```
 
-## 🚀 How to Compile
+---
+
+## ⚙️ How to Compile
 
 ```bash
 g++ src/main.cpp src/Student.cpp src/StudentManager.cpp -o StudentManagementSystem
 ```
 
-## ▶️ Run
+---
+
+## ▶️ Run the Program
 
 ```bash
 ./StudentManagementSystem
 ```
 
-Windows:
+### Windows
 
 ```bash
 StudentManagementSystem.exe
 ```
 
-## 📸 Sample Menu
+---
 
-```
-========== Student Management System ==========
-1. Add Student
-2. Display Students
-3. Search Student by ID
-4. Search Student by Name
-5. Update Student
-6. Delete Student
-7. Exit
-```
+# 📸 Application Screenshots
 
-## 📚 Concepts Used
+## 🏠 Home Menu
 
-- Classes & Objects
+![Home Menu](images/home.png)
+
+---
+
+## ➕ Add Student
+
+![Add Student](images/add-student.png)
+
+---
+
+## 📋 Display Students
+
+![Display Students](images/display.png)
+
+---
+
+## 🔍 Search Student by ID
+
+![Search by ID](images/search-id.png)
+
+---
+
+## 🔎 Search Student by Name
+
+![Search by Name](images/search-name.png)
+
+---
+
+## ✏️ Update Student
+
+![Update Student](images/update.png)
+
+---
+
+## ❌ Delete Student
+
+![Delete Student](images/delete.png)
+
+---
+
+## 📚 Concepts Demonstrated
+
+- Object-Oriented Programming
+- Classes and Objects
 - Encapsulation
 - Constructors
-- Getters & Setters
-- Vectors
+- Vectors (STL)
 - Functions
 - File Handling
 - Input Validation
 - CRUD Operations
+- Searching Algorithms
+- Basic Software Design
+
+---
 
 ## 🔮 Future Improvements
 
-- Login System
+- Login Authentication
 - Sorting Students
-- Binary Search
-- GUI Version
-- Database Integration
+- Export Data to CSV
+- Better Exception Handling
+- Graphical User Interface (GUI)
+- Database Integration (MySQL)
+
+---
 
 ## 👨‍💻 Author
 
 **Shimul Malakar**
 
-B.Tech CSE, NIT Silchar
+- GitHub: https://github.com/shimulmalakar
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License.
